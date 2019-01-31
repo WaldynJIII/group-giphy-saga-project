@@ -24,7 +24,7 @@ class Search extends Component {
       render() {
         return (
      
-        <div className="container">  
+        <div className="container">  add
             <Card className="giphyDisplay" >
                 <CardContent >
                     <div>
