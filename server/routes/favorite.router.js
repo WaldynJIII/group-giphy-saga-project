@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
 });
 
 // update given favorite with a category id
-router.put('/:favId', (req, res) => {
+router.post('/:favId', (req, res) => {
   // req.body should contain a category_id to add to this favorite image
   res.sendStatus(200);
 });
