@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FavoritesDisplay from './FavoritesDisplay';
 
 class Favorites extends Component {
 
@@ -6,6 +7,7 @@ class Favorites extends Component {
         return (
             <div>
                 <h2>Favorites!</h2>
+                <FavoritesDisplay />
             </div>
         );
     }
