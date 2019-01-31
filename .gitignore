@@ -66,5 +66,10 @@ typings/
 
 # ignore package-lock as it complicates merging
 package-lock.json
-
+#misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
 .vscode/

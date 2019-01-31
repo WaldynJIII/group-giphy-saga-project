@@ -16,23 +16,17 @@ function* rootSaga() {
     yield takeEvery('FETCH_GIPHY', getCatGiph);
 }
 
-const boxList = (state = [], action) => {
+
+const displayList = (state = [], action)=>{
     switch (action.type) {
-        case 'SET_BOXES':
+        case 'SET_GIPHY_DISPLAY':
+
             return action.payload;
         default:
             return state;
     }
 };
 
-const giphyList = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_GIPH':
-            return action.payload;
-        default:
-            return state;
-    }
-};
 
 function* getCatGiph(action) {
     try {
@@ -45,14 +39,17 @@ function* getCatGiph(action) {
     }
 }
 
+
+
 function* firstGiph(action) {
 
     // replaces the need for .then and .catch
     try {
-        const serverResponse = yield axios.get('/api/giphy');
+        const boxResponse = yield axios.get('/api/giphy');
         // same as dispatch
-        console.log(serverResponse.data)
-        const nextAction = { type: 'SET_GIPHY_DISPLAY', payload: serverResponse.data };
+        console.log(boxResponse.data)
+        const nextAction = { type: 'SET_GIPHY_DISPLAY', payload: boxResponse.data };
+
         yield put(nextAction); // trigger our reducer
     } catch (error) {
         console.log('Error making GET request');
@@ -62,7 +59,7 @@ function* firstGiph(action) {
 function* postGiph(action) {
     try {
         yield axios.post('/api/plant', action.payload);
-        const nextAction = { type: 'FETCH_FRUITS' };
+        const nextAction = { type: 'POST_GIPHY' };
         yield put(nextAction);
     } catch (error) {
         console.log('Error making POST request');
@@ -75,8 +72,9 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
     combineReducers({
-        giphyList,
-        boxList
+
+        displayList
+
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
