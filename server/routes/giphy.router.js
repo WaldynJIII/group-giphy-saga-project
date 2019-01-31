@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const BASE_URL = 'api.giphy.com/v1/gifs/search'
+const BASE_URL = 'http://api.giphy.com/v1/gifs/search'
 const API_KEY = process.env.API_KEY;
 
 router.get('/', (req, res) => {
@@ -16,3 +16,5 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     });
 });
+
+module.exports = router;
