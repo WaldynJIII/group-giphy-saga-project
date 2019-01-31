@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -5,7 +6,7 @@ const bodyParser = require('body-parser');
 // Route includes
 const favoriteRouter = require('./routes/favorite.router');
 const categoryRouter = require('./routes/category.router');
-
+const giphyRouter = require('./routes/giphy.router.js')
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
