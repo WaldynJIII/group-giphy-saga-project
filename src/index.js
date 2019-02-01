@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-import App from './App';
+import App from './components/App/App.js';
 
 
 import createSagaMiddleware from 'redux-saga';
@@ -15,11 +16,17 @@ function* rootSaga() {
     yield takeEvery('POST_GIPHY', postFruitFetcher);
 }
 
+function demoMap (giphy){
+    return giphy.images.fixed_height_still.url
+}
+const displayList = (state = [], nextAction)=>{
+    const displayArray = nextAction.payload.map(demoMap)
+    
+    console.log(displayArray)
+    switch (nextAction.type) {
 
-const displayList = (state = [], action)=>{
-    switch (action.type) {
         case 'SET_GIPHY_DISPLAY':
-            return action.payload;
+             return nextAction.payload
         default:
             return state;
     }
