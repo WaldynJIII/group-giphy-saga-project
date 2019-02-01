@@ -33,11 +33,11 @@ router.post('/', (req, res) => {
     });
 });
 
-// update given favorite with a category id
-router.post('/:favId', (req, res) => {
-  // req.body should contain a category_id to add to this favorite image
-  res.sendStatus(200);
-});
+// // update given favorite with a category id
+// router.post('/:favId', (req, res) => {
+//   // req.body should contain a category_id to add to this favorite image
+//   res.sendStatus(200);
+// });
 
 // delete a favorite
 router.delete('/', (req, res) => {
