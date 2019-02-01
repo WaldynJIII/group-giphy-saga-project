@@ -5,7 +5,7 @@ const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM favorite ORDER BY id ASC`;
+  const queryText = `SELECT * FROM "favorite" ORDER BY "id" ASC`;
   pool.query(queryText)
     .then((result) => {
       res.send(result.rows);
@@ -20,9 +20,10 @@ router.get('/', (req, res) => {
 // add a new favorite 
 router.post('/', (req, res) => {
   const fav = req.body
-  const queryText = `INSERT INTO "favorite" ("id", "img_path", "category_id")
-                       VALUES ($1, $2, $3,)`
-  pool.query(queryText, [fav.id, fav.img_path, favcategory_id])
+  console.log(req.body)
+  const queryText = `INSERT INTO "favorite" ( "img_path", "category_id")
+                       VALUES ($1, $2)`
+  pool.query(queryText, [fav.img_path, fav.category_id])
     .then((result) => {
       res.send(result.rows);
     })
