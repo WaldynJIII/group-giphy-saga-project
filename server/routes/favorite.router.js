@@ -5,10 +5,9 @@ const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-<<<<<<< HEAD
   
   res.sendStatus(200);
-=======
+
   const queryText = `SELECT * FROM "favorite" ORDER BY "id" ASC`;
   pool.query(queryText)
     .then((result) => {
@@ -18,7 +17,7 @@ router.get('/', (req, res) => {
       console.log(`Error on query ${error}`);
       res.sendStatus(500);
     });
->>>>>>> 3b239c18150e0e6bab2792111ea0c0ccea6c0a70
+
 });
 
 
