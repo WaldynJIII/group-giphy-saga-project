@@ -1,0 +1,15 @@
+.container  {
+    justify-content: flex;
+    float: left;
+}
+.gifCard{ 
+    height: auto;
+    width: auto;
+    margin: 5px;
+
+
+}
+.gifDispaly {
+    height: auto;
+    width: auto;
+}
