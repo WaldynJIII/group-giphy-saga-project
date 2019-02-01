@@ -11,12 +11,9 @@ class Search extends Component {
     }
 
 
-    componentDidMount() {
-        this.getGiphy();
-      }
       // Renders the entire app on the DOM
       getGiphy = () => {
-          this.props.dispatch({ type: 'FETCH_GIPHY', action: this.state.search});
+          this.props.dispatch({ type: 'POST_GIPHY', payload: this.state});
       }
     
     handleNameChange = event => {
@@ -31,7 +28,8 @@ class Search extends Component {
         return (
      
         <div className="container">  
-            
+                <input onChange ={this.handleNameChange} type='text' placeholder='search'></input>
+                <button onClick={this.getGiphy}></button>
                          {this.props.arrayGif.map((gif)=> {
                                return (<GifItem key={gif.id} gif={gif} />) }) }
                       
