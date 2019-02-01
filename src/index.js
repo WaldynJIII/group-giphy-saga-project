@@ -12,9 +12,9 @@ import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios';
 
 
-const favorites = () => {[
+// const favorites = () => {[
     
-]}
+// ]}
 
 function* rootSaga() {
     yield takeEvery('FETCH_GIPHY', firstGiph);
