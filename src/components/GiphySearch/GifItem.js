@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import CardContent from '@material-ui/core/CardContent';
 
 // import CardActions from '@material-ui/core/CardActions';
 
@@ -29,7 +30,9 @@ class GifItem extends Component {
     };
 
     favoriteBtn = () => {
-        this.props.dispatch({type:'POST_GIPHY', payload: this.state})
+        console.log(this.props.gif.url);
+        
+        // this.props.dispatch({type:'FAVORITE_GIPHY', payload: this.state})
         
     };
        

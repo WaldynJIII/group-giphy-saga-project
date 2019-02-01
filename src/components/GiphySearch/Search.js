@@ -11,12 +11,9 @@ class Search extends Component {
     }
 
 
-    componentDidMount() {
-        this.getGiphy();
-      }
       // Renders the entire app on the DOM
       getGiphy = () => {
-          this.props.dispatch({ type: 'POST_GIPHY', action: this.state.search});
+          this.props.dispatch({ type: 'POST_GIPHY', payload: this.state});
       }
     
     handleNameChange = event => {
