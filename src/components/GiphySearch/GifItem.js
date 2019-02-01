@@ -13,8 +13,8 @@ class GifItem extends Component {
     constructor(props){
         super(props);
         this.state = {
-            category: '',
-            urls: '',
+            category_id: '',
+          img_path: '',
            
         }
     }
@@ -46,8 +46,9 @@ class GifItem extends Component {
 
     categoryChange = (event) => {
         this.setState({
-            category: event.target.value,
-            urls: this.props.gif.images.downsized.url
+            category_id: event.target.value,
+            img_path: this.props.gif.images.downsized.url
+            
         })
     }
 
@@ -59,7 +60,7 @@ class GifItem extends Component {
                 </CardContent> 
                 <CardActions>
                 <select onChange={this.categoryChange} className="category">
-                                
+                                <option />
                                 <option value="1">Funny</option>
                                 <option value="2">Vega</option>
                                 <option value="3">Cartoon</option>
