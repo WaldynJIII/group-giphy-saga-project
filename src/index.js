@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
@@ -22,12 +23,17 @@ function* rootSaga() {
     yield takeEvery('FETCH_GIPHY', getCatGiph);
 }
 
+function demoMap (giphy){
+    return giphy.images.fixed_height_still.url
+}
+const displayList = (state = [], nextAction)=>{
+    const displayArray = nextAction.payload.map(demoMap)
+    
+    console.log(displayArray)
+    switch (nextAction.type) {
 
-const displayList = (state = [], action)=>{
-    switch (action.type) {
         case 'SET_GIPHY_DISPLAY':
-        // console.log(action.payload);
-            return action.payload;
+          return action.payload;
         default:
             return state;
     }
