@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-
+import Header from './Header/Header.js';
+import Search from '../GiphySearch/Search.js';
 
 class App extends Component {
 
   render() {
     return (
       <div>
-        <h1>Giphy Search!</h1>
+        <Header />
+        <Search />
       </div>
     );
   }
