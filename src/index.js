@@ -54,7 +54,7 @@ function* firstGiph(action) {
 
         yield put(nextAction); // trigger our reducer
     } catch (error) {
-        console.log('Error making GET request');
+        console.log('Error making GET request', error);
         alert('there was a problem');
     }
 }

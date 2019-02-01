@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import GifItem from './GifItem.js';
 
 class Search extends Component {
     constructor() {
@@ -47,25 +48,20 @@ class Search extends Component {
         return (
      
         <div className="container">  
-            <Card className="giphyDisplay" >
-                <CardContent>
-                    <div>
-
-                        {/* {this.props.reduxState.displayList.map((gif)=> {
-                                return <PlantRow key={gif.id} gif={gif} /> */}
+            
+                         {this.props.arrayGif.map((gif)=> {
+                               return (<GifItem key={gif.id} gif={gif} />) }) }
                       
-                    </div>
-                </CardContent>
-                <CardActions>
+                {/* <CardActions>
                     {/* <Button onClick={giphyFavorite}>Favorite</Button> */}
-                </CardActions>
-            </Card>     
+                {/* </CardActions> */}
+          
         </div>
         );
       }
     }
 const mapStoreToProps = reduxStore => ({
-        reduxStore,
+        arrayGif: reduxStore.displayList 
     });
   
 export default connect(mapStoreToProps)(Search);
