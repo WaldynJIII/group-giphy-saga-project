@@ -58,7 +58,7 @@ function* firstGiph(action) {
 }
 function* postGiph(action) {
     try {
-        yield axios.post('/api/plant', action.payload);
+        yield axios.post('/api/giphy', action.payload);
         const nextAction = { type: 'POST_GIPHY' };
         yield put(nextAction);
     } catch (error) {
