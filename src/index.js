@@ -14,32 +14,19 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_GIPHY', firstGiph);
     yield takeEvery('POST_GIPHY', postGiphy);
-    yield takeEvery('SET_GIPH', getCatGiph);
 }
 
 
 const displayList = (state = [], action)=>{
     switch (action.type) {
         case 'SET_GIPHY_DISPLAY':
-        // console.log(action.payload);
+        console.log(action.payload);
             return action.payload;
         default:
             return state;
     }
     
 };
-
-
-function* getCatGiph(action) {
-    try {
-        const serverResponse = yield axios.get('/api/category');
-        console.log(serverResponse);
-        const nextAction = {type: 'SET_GIPH', payload: serverResponse.data};
-        yield put(nextAction);
-    } catch (error) {
-        alert('there was an error in GET category');
-    }
-}
 
 
 
@@ -58,10 +45,10 @@ function* firstGiph(nextAction) {
         alert('there was a problem');
     }
 }
-function* postGiph(action) {
-    // console.log(action.payload);
+function* postGiphy(action) {
+    console.log(action.payload);
     try {
-        yield axios.post('/api/favorite', action.payload);
+        yield axios.post('/api/giphy', action.payload);
         console.log(action.payload);
         const nextAction = { type: 'FETCH_GIPHY' };
         yield put(nextAction);
