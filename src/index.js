@@ -10,10 +10,17 @@ import App from './components/App/App.js';
 
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects'
-import axios from 'axios'
+import axios from 'axios';
+
+
+const favorites = () => {[
+    
+]}
+
 function* rootSaga() {
-    yield takeEvery('FETCH_GIPHY', firstSaga);
-    yield takeEvery('POST_GIPHY', postFruitFetcher);
+    yield takeEvery('FETCH_GIPHY', firstGiph);
+    yield takeEvery('POST_GIPHY', postGiph);
+    yield takeEvery('FETCH_GIPHY', getCatGiph);
 }
 
 function demoMap (giphy){
@@ -26,14 +33,28 @@ const displayList = (state = [], nextAction)=>{
     switch (nextAction.type) {
 
         case 'SET_GIPHY_DISPLAY':
-             return nextAction.payload
+          return action.payload;
         default:
             return state;
     }
+    
 };
 
 
-function* firstSaga(action) {
+function* getCatGiph(action) {
+    try {
+        const serverResponse = yield axios.get('/api/category');
+        console.log(serverResponse);
+        const nextAction = {type: 'SET_GIPH', payload: serverResponse.data};
+        yield put(nextAction);
+    } catch (error) {
+        alert('there was an error in GET category');
+    }
+}
+
+
+
+function* firstGiph(action) {
 
     // replaces the need for .then and .catch
     try {
@@ -41,15 +62,16 @@ function* firstSaga(action) {
         // same as dispatch
         console.log(boxResponse.data)
         const nextAction = { type: 'SET_GIPHY_DISPLAY', payload: boxResponse.data };
+
         yield put(nextAction); // trigger our reducer
     } catch (error) {
-        console.log('Error making GET request');
+        console.log('Error making GET request', error);
         alert('there was a problem');
     }
 }
-function* postFruitFetcher(action) {
+function* postGiph(action) {
     try {
-        yield axios.post('/api/plant', action.payload);
+        yield axios.post('/api/giphy', action.payload);
         const nextAction = { type: 'POST_GIPHY' };
         yield put(nextAction);
     } catch (error) {
@@ -63,7 +85,9 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
     combineReducers({
+
         displayList
+
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
