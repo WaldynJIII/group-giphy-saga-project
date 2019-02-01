@@ -11,7 +11,7 @@ class GifItem extends Component {
         super(props);
         this.state = {
             category: '',
-            id: 0,
+           
         }
     }
     
@@ -26,7 +26,8 @@ class GifItem extends Component {
     };
 
     favoriteBtn = () => {
-        this.props.dispatch({type:'POST_GIPHY', payload: this.props })
+        this.props.dispatch({type:'POST_GIPHY', payload: this.state})
+        
     };
        
     //disable the favorite button until a category is selected
@@ -39,9 +40,9 @@ class GifItem extends Component {
         };
     }
 
-    categoryChange = () => {
+    categoryChange = (event) => {
         this.setState({
-            category: 'yes',
+            category: event.target.value,
         })
     }
 
@@ -53,7 +54,7 @@ class GifItem extends Component {
                 </CardContent> 
                 <CardActions>
                 <select onChange={this.categoryChange} className="category">
-                                <option></option>
+                                
                                 <option value="1">Funny</option>
                                 <option value="2">Vega</option>
                                 <option value="3">Cartoon</option>
