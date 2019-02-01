@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { CardContent } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+
 
 class GifItem extends Component {
     
@@ -14,10 +18,11 @@ class GifItem extends Component {
 
     render() {
         return (
-            <div>
-                {this.props.displayList.images.name}
-               
-            </div>
+            <Card>
+            <CardContent>
+               <img src={this.props.gif.images.downsized.url} />
+            </CardContent> 
+            </Card>
         );
     }
 }
