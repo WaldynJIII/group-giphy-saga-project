@@ -13,9 +13,12 @@ class Search extends Component {
       }
       // Renders the entire app on the DOM
       getGiphy = () => {
+    //       this.props.dispatch({ type: 'FETCH_GIPHY'});
+    //   }
         axios.get('/').then((result) => {
-          let action = {type: 'GET_GIPHY', payload: result.data.data};
+          let action = {type: 'FETCH_GIPHY', payload: result.data.data};
           this.props.dispatch(action);
+          console.log(action);
         }).catch((error) => {
           console.log('GET Error',error);
         })
@@ -24,14 +27,17 @@ class Search extends Component {
       render() {
         return (
      
-        <div className="container">  add
+        <div className="container">  
             <Card className="giphyDisplay" >
-                <CardContent >
+                <CardContent>
                     <div>
 
                         {/* this will display 1 image at a time needs to be map() */}
-                        {this.props.random.images && 
-                        <img src={this.props.random.images.downsized.url} />}
+                        {this.props.state.reduxStore.map((giphy)=> {
+                            return <PlantRow key={giphy.id} giphy={giphy} />
+                        })}
+                        {/* {this.props.random.images && 
+                        <img src={this.props.random.images.downsized.url} />} */}
                     </div>
                 </CardContent>
                 <CardActions>
@@ -43,8 +49,5 @@ class Search extends Component {
       }
     }
     
-    const mapReduxStoreToProps = (reduxStore) => ({
-      random: reduxStore.random
-    });
-    
-export default connect(mapStateToProps)(Search);
+  
+export default connect(mapStoreToProps)(Search);
