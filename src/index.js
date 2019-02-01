@@ -13,8 +13,8 @@ import axios from 'axios';
 
 function* rootSaga() {
     yield takeEvery('FETCH_GIPHY', firstGiph);
-    yield takeEvery('POST_GIPHY', postGiph);
-    yield takeEvery('FETCH_GIPHY', getCatGiph);
+    yield takeEvery('POST_GIPHY', postGiphy);
+    yield takeEvery('SET_GIPH', getCatGiph);
 }
 
 
@@ -43,7 +43,7 @@ function* getCatGiph(action) {
 
 
 
-function* firstGiph(action) {
+function* firstGiph(nextAction) {
 
     // replaces the need for .then and .catch
     try {
@@ -58,10 +58,10 @@ function* firstGiph(action) {
         alert('there was a problem');
     }
 }
-function* postGiph(action) {
+function* postGiphy(action) {
     try {
         yield axios.post('/api/giphy', action.payload);
-        const nextAction = { type: 'POST_GIPHY' };
+        const nextAction = { type: 'FETCH_GIPHY' };
         yield put(nextAction);
     } catch (error) {
         console.log('Error making POST request');

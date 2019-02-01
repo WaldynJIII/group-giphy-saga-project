@@ -7,7 +7,7 @@ const API_KEY = process.env.API_KEY;
 
 
 router.get('/', (req, res) => {
-    const giphy = req.query.giphy
+   
     axios({
         method: 'GET',
         url: `${BASE_URL}?q=${giphy}&api_key=${API_KEY}&limit=1`
@@ -19,5 +19,15 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     });
 });
-
+router.post('/post', (req, res) => {
+   giphy = req.data
+    console.log(req.body)
+       pool.query(giphy).then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
 module.exports = router;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FavoritesDisplay from './FavoritesDisplay';
-
+import
 class Favorites extends Component {
 
     render() {
