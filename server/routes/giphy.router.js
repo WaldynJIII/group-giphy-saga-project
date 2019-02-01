@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
    
     axios({
         method: 'GET',
-        url: `${BASE_URL}?q=${giphy}&api_key=${API_KEY}&limit=1`
+        url: `${BASE_URL}?q=${giphy}&api_key=${API_KEY}&limit=10`
     }).then((responseFromGIFY) => {
 
         res.send(responseFromGIFY.data.data);
