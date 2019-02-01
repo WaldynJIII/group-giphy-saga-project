@@ -15,13 +15,13 @@ class FavoritesDisplay extends Component {
 
     render() {
         return (
-            <ul>
+            <div>
                 {this.props.reduxState.favorites.map((fave) => {
                     return (
                         <FavoriteItems key={fave.id} fave={fave} />
                     )
                 })}
-            </ul>
+            </div>
         );
     }
 }
