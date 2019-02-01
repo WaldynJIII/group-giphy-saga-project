@@ -10,6 +10,11 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios';
 
+
+const favorites = () => {[
+    
+]}
+
 function* rootSaga() {
     yield takeEvery('FETCH_GIPHY', firstGiph);
     yield takeEvery('POST_GIPHY', postGiph);

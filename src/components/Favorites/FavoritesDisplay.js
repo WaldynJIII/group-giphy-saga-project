@@ -9,7 +9,7 @@ class FavoritesDisplay extends Component {
     }
 
     getFavorites = () => {
-        const action = { type: 'GET_FAVORITES' };
+        const action = { type: 'FETCH_GIPHY' };
         this.props.dispatch(action);
     }
 
