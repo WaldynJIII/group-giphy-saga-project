@@ -4,7 +4,8 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-import App from './components/App/App';
+import App from './components/App/App.js';
+
 
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects'
@@ -20,11 +21,12 @@ function* rootSaga() {
 const displayList = (state = [], action)=>{
     switch (action.type) {
         case 'SET_GIPHY_DISPLAY':
-
+        // console.log(action.payload);
             return action.payload;
         default:
             return state;
     }
+    
 };
 
 
