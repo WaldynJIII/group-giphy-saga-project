@@ -22,17 +22,9 @@ class Search extends Component {
       }
       // Renders the entire app on the DOM
       getGiphy = () => {
-          this.props.dispatch({ type: 'FETCH_GIPHY'});
+          this.props.dispatch({ type: 'FETCH_GIPHY', action: this.state.search});
       }
-    //      should be unnecessary
-    //     axios.get('/').then((result) => {
-    //       let action = {type: 'FETCH_GIPHY', payload: result.data.data};
-    //       this.props.dispatch(action);
-    //       console.log(action);
-    //     }).catch((error) => {
-    //       console.log('GET Error',error);
-    //     })
-    //   }
+    
     handleNameChange = event => {
         console.log('Search')
         this.setState({
