@@ -1,35 +1,63 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
-// import Menu from '@material-ui/core';
-import Search from '../../GiphySearch/Search';
-import Favorites from '../../Favorites/Favorites';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import NoSsr from '@material-ui/core/NoSsr';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 
+function TabContainer(props) {
+    return (
+        <Typography component="div" style={{ padding: 8 * 3 }}>
+            {props.children}
+        </Typography>
+    );
+}
+
+TabContainer.propTypes = {
+    children: PropTypes.node.isRequired,
+};
+
+function LinkTab(props) {
+    return <Tab component="a" onClick={event => event.preventDefault()} {...props} />;
+}
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
+    },
+});
 
 class Header extends Component {
+    state = {
+        value: 0,
+    };
+
+    handleChange = (event, value) => {
+        this.setState({ value });
+    };
+
     render() {
+        const { classes } = this.props;
+        const { value } = this.state;
+
         return (
-            <div>
-                <header className="App-header">
-                    <h1>Group Giphy </h1>
-                    <Router>
-                        <div>
-                            <ul>
-                                <li>
-                                    <Link to="/">Search</Link>
-                                </li>
-                                <li>
-                                    <Link to="/favorites">Favorites</Link>
-                                </li>
-                            </ul>
-                            <Route exact path="/" component={Search} />
-                            <Route exact path="/favorites" component={Favorites} />
-                        </div>
-                    </Router>
-                </header>
-            </div>
+            <NoSsr>
+                <div className="App-header">
+                    <AppBar position="static">
+                        <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
+                            <LinkTab label="Search" href="/" />
+                            <LinkTab label="Favorites" href="/favorites" />
+                        </Tabs>
+                    </AppBar>
+                </div>
+            </NoSsr>
         );
     }
 }
+
+
 
 export default Header;
