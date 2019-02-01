@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
@@ -12,28 +11,18 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios';
 
-
-// const favorites = () => {[
-    
-// ]}
-
 function* rootSaga() {
     yield takeEvery('FETCH_GIPHY', firstGiph);
     yield takeEvery('POST_GIPHY', postGiph);
     yield takeEvery('FETCH_GIPHY', getCatGiph);
 }
 
-function demoMap (giphy){
-    return giphy.images.fixed_height_still.url
-}
-const displayList = (state = [], nextAction)=>{
-    const displayArray = nextAction.payload.map(demoMap)
-    
-    console.log(displayArray)
-    switch (nextAction.type) {
 
+const displayList = (state = [], action)=>{
+    switch (action.type) {
         case 'SET_GIPHY_DISPLAY':
-          return action.payload;
+        // console.log(action.payload);
+            return action.payload;
         default:
             return state;
     }
@@ -71,7 +60,7 @@ function* firstGiph(action) {
 }
 function* postGiph(action) {
     try {
-        yield axios.post('/api/giphy', action.payload);
+        yield axios.post('/api/plant', action.payload);
         const nextAction = { type: 'POST_GIPHY' };
         yield put(nextAction);
     } catch (error) {
