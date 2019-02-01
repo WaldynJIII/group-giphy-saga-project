@@ -59,12 +59,14 @@ function* firstGiph(action) {
     }
 }
 function* postGiph(action) {
+    // console.log(action.payload);
     try {
-        yield axios.post('/api/plant', action.payload);
-        const nextAction = { type: 'POST_GIPHY' };
+        yield axios.post('/api/favorite', action.payload);
+        console.log(action.payload);
+        const nextAction = { type: 'FETCH_GIPHY' };
         yield put(nextAction);
     } catch (error) {
-        console.log('Error making POST request');
+        console.log('Error making POST request', error);
         alert('there was a problem. Check console logs');
     }
 }
