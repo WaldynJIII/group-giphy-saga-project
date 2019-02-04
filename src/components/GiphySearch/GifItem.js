@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+// import CardMedia from '@material-ui/core/CardMedia';
+import './GifItem.css';
 import CardContent from '@material-ui/core/CardContent';
-
-// import CardActions from '@material-ui/core/CardActions';
 
 
 
@@ -30,7 +30,7 @@ class GifItem extends Component {
     };
 
     favoriteBtn = () => {
-        console.log(this.props.gif.url);
+        console.log(this.state);
         
         // this.props.dispatch({type:'FAVORITE_GIPHY', payload: this.state})
         
@@ -56,9 +56,10 @@ class GifItem extends Component {
 
     render() {
         return (
-            <Card>
+            <div className="container">
+            <Card className="gifCard">
                 <CardContent>
-                    <img src={this.props.gif.images.downsized.url} />
+                    <img className="gifDispaly" src={this.props.gif.images.downsized.url} />
                 </CardContent> 
                 <CardActions>
                 <select onChange={this.categoryChange} className="category">
@@ -73,6 +74,7 @@ class GifItem extends Component {
                     {/* <Button onClick={this.favoriteBtn} variant="contained" color="primary">Favorite</Button> */}
                 </CardActions>
             </Card>
+            </div>
         );
     }
 }
