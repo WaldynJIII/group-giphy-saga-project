@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GifItem from './GifItem.js';
+import './searchPage.css'
 
 class Search extends Component {
     constructor() {
@@ -30,9 +31,10 @@ class Search extends Component {
         <div className="container">  
                 <input onChange ={this.handleNameChange} type='text' placeholder='search'></input>
                 <button onClick={this.getGiphy}></button>
-                         {this.props.arrayGif.map((gif)=> {
-                               return (<GifItem key={gif.id} gif={gif} />) }) }
-                      
+                <div id="cards-container">
+                    {this.props.arrayGif.map((gif)=> {
+                        return (<GifItem key={gif.id} gif={gif} />) }) }
+                </div>
                 {/* <CardActions>
                     {/* <Button onClick={giphyFavorite}>Favorite</Button> */}
                 {/* </CardActions> */}

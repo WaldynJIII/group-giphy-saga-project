@@ -4,10 +4,21 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
+import { withStyles } from '@material-ui/core/styles';
 
 // import CardActions from '@material-ui/core/CardActions';
 
-
+const styles = {
+    card: {
+      maxWidth: 245,
+      minWidth: 245,
+      margin: 10,
+      direciton: 'rtl'
+    },
+    media: {
+      height: 140,
+    },
+  };  
 
 class GifItem extends Component {
     constructor(props){
@@ -55,8 +66,9 @@ class GifItem extends Component {
     }
 
     render() {
+        const {classes} = this.props;
         return (
-            <Card>
+            <Card className={classes.card} id="card-item">
                 <CardContent>
                     <img src={this.props.gif.images.downsized.url} />
                 </CardContent> 
@@ -77,5 +89,5 @@ class GifItem extends Component {
     }
 }
 
-export default connect()(GifItem);
+export default connect()(withStyles(styles)(GifItem));
 
