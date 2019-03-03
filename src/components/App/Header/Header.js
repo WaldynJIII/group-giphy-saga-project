@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-// import AppBar from '@material-ui/core/AppBar';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import Search from './../../GiphySearch/Search';
-import Favorites from './../../Favorites/Favorites';
+import { Link } from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
 
 class Header extends Component {
@@ -12,7 +9,6 @@ class Header extends Component {
 
         return (
             <div className="App-header">
-                    <Router>
                         <Tabs>
                         <div>
                             <li>
@@ -21,11 +17,8 @@ class Header extends Component {
                             <li>
                                 <Link label="Favorites" to="/Favorites">Favorites</Link>
                             </li>
-                            <Route exact path="/" component={Search} />
-                            <Route exact path="/Favorites" component={Favorites} />
                         </div>
                         </Tabs>
-                    </Router>
             </div>
         );
     }
