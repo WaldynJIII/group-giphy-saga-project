@@ -87,7 +87,6 @@ class GifItem extends Component {
                     {/* <Button onClick={this.favoriteBtn} variant="contained" color="primary">Favorite</Button> */}
                 </CardActions>
             </Card>
-            </div>
         );
     }
 }
