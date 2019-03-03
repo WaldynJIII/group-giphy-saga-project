@@ -1,0 +1,16 @@
+#app-header {
+    /* display: inline-block; */
+    width: 100%;
+    height: 70px;
+    background-color: rgb(212, 255, 212);
+}
+
+#app-header div {
+    float: right;
+}
+
+#app-header h2 {
+    /* float: left; */
+    text-align: center;
+    color: rgb(90, 83, 83)
+}

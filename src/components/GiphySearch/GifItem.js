@@ -10,8 +10,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     card: {
-      maxWidth: 245,
-      minWidth: 245,
+      maxWidth: 285,
+      minWidth: 285,
       margin: 10,
       direciton: 'rtl'
     },

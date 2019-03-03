@@ -25,11 +25,6 @@ const styles = {
     iconButton: {
       padding: 10,
     },
-    divider: {
-      width: 1,
-      height: 28,
-      margin: 4,
-    },
   };
   
 
@@ -60,7 +55,7 @@ class Search extends Component {
         return (
      
         <div className="container">
-            <Paper className={classes.root} elevation={1}>
+            <Paper id="search-box" className={classes.root} elevation={1}>
                 <InputBase onChange={this.handleNameChange} className={classes.input} placeholder="Search Giphy Api" />
                 <IconButton onClick={this.getGiphy} className={classes.iconButton} aria-label="Search">
                     <SearchIcon />
