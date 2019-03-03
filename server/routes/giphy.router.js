@@ -34,24 +34,5 @@ router.post('/', (req, res) => {
         console.log('Error in GET', error);
         res.sendStatus(500);
     });
-
-    // axios({
-    //     method: 'POST',
-    //     url: `${BASE_URL}?q=${giphy.search}&api_key=${API_KEY}&limit=4`,
-    //     data: giphy.search
-    // }).then(responseFromGIFY => {
-    //     res.send(responseFromGIFY.data.data)
-    // })
-
-    
-//    giphy = req.data
-//     console.log(req.body)
-//        pool.query(giphy).then((result) => {
-//             res.sendStatus(200);
-//         })
-//         .catch((error) => {
-//             console.log(`Error on query ${error}`);
-//             res.sendStatus(500);
-//         });
 });
 module.exports = router;
