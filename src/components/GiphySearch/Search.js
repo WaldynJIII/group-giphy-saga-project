@@ -3,6 +3,36 @@ import { connect } from 'react-redux';
 import GifItem from './GifItem.js';
 import './searchPage.css'
 
+// material ui
+
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+
+const styles = {
+    root: {
+      padding: '2px 4px',
+      display: 'flex',
+      alignItems: 'center',
+      width: 400,
+    },
+    input: {
+      marginLeft: 8,
+      flex: 1,
+    },
+    iconButton: {
+      padding: 10,
+    },
+    divider: {
+      width: 1,
+      height: 28,
+      margin: 4,
+    },
+  };
+  
+
 class Search extends Component {
     constructor() {
         super();
@@ -26,18 +56,23 @@ class Search extends Component {
 
 
       render() {
+          const {classes } = this.props;
         return (
      
-        <div className="container">  
-                <input onChange ={this.handleNameChange} type='text' placeholder='search'></input>
-                <button onClick={this.getGiphy}></button>
-                <div id="cards-container">
-                    {this.props.arrayGif.map((gif)=> {
-                        return (<GifItem key={gif.id} gif={gif} />) }) }
-                </div>
-                {/* <CardActions>
-                    {/* <Button onClick={giphyFavorite}>Favorite</Button> */}
-                {/* </CardActions> */}
+        <div className="container">
+            <Paper className={classes.root} elevation={1}>
+                <InputBase onChange={this.handleNameChange} className={classes.input} placeholder="Search Giphy Api" />
+                <IconButton onClick={this.getGiphy} className={classes.iconButton} aria-label="Search">
+                    <SearchIcon />
+                </IconButton>
+            </Paper>
+            <div id="cards-container">
+                {this.props.arrayGif.map((gif)=> {
+                    return (<GifItem key={gif.id} gif={gif} />) }) }
+            </div>
+            {/* <CardActions>
+                {/* <Button onClick={giphyFavorite}>Favorite</Button> */}
+            {/* </CardActions> */}
           
         </div>
         );
@@ -47,4 +82,4 @@ const mapStoreToProps = reduxStore => ({
         arrayGif: reduxStore.displayList 
     });
   
-export default connect(mapStoreToProps)(Search);
+export default connect(mapStoreToProps)(withStyles(styles)(Search));
